@@ -27,7 +27,6 @@ class Queue {
   import * as PlayHT from "playht";
   import { createWriteStream } from 'fs';
   import { exec } from 'child_process';
-  import { spawn } from 'child_process';
   // import { Queue } from './Queue';
   
   // Initialize Perplexity API
@@ -205,14 +204,7 @@ function convertTimeForSpeech(text) {
 
 async function main() {
   let chatHistory = [];
-  // Spawn Python script as a child process
-  const pythonProcess = spawn('python', ['end_call.py', process.pid.toString()]);
-
-    // Event listener for Python process exit
-  pythonProcess.on('exit', (code) => {
-      console.log(`Python process exited with code ${code}`);
-        // Handle the exit of the Python script, maybe clean up or restart your Node.js logic
-  });
+  
   
   while (true) { // Loop until a break condition is met
       try {

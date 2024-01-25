@@ -22,7 +22,7 @@ import webbrowser
 def call_js_chat():
     try:
         # Start the JavaScript file using Node.js in a subprocess
-        process = subprocess.Popen(['node', 'integrated_time.mjs'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        process = subprocess.Popen(['node', 'integratedReceptionist.mjs'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
         # Continuously read and print the output
         while True:

@@ -27,7 +27,6 @@ class Queue {
   import * as PlayHT from "playht";
   import { createWriteStream } from 'fs';
   import { exec } from 'child_process';
-  import { spawn } from 'child_process';
   // import { Queue } from './Queue';
   
   // Initialize Perplexity API
@@ -203,16 +202,23 @@ function convertTimeForSpeech(text) {
   });
 }
 
+import { spawn } from 'child_process';
+
+// Replace 'assets/intro.wav' with the path to your audio file
+const audioFile = 'audio/intro.wav';
+
+const player = spawn('ffplay', ['-nodisp', '-autoexit', audioFile]);
+const introText = "Hello! This is Jacob from Fight Flow Academy. Are you interested in learning martial arts?"
 async function main() {
   let chatHistory = [];
-  // Spawn Python script as a child process
-  const pythonProcess = spawn('python', ['button_monitor.py', process.pid.toString()]);
-
-    // Event listener for Python process exit
-  pythonProcess.on('exit', (code) => {
-      console.log(`Python process exited with code ${code}`);
-        // Handle the exit of the Python script, maybe clean up or restart your Node.js logic
+  player.on('close', (code) => {
+      console.log(`Child process exited with code ${code}`);
   });
+
+  player.stderr.on('data', (data) => {
+      console.error(`stderr: ${data}`);
+  });
+
   
   while (true) { // Loop until a break condition is met
       try {
@@ -235,6 +241,7 @@ async function main() {
                   model: 'llama-2-70b-chat',
                   messages: [
                       { role: 'system', content: script },
+		      {"role": "assistant", "content": introText},
                       // { role: 'user', content: transcript }
                       ...chatHistory
                   ],

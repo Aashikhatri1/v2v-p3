@@ -1,4 +1,6 @@
 import { transcribeStream } from './speechToText.js';
+import { spawn } from 'child_process';
+
 class Queue {
     constructor() {
       this.items = [];
@@ -202,7 +204,7 @@ function convertTimeForSpeech(text) {
   });
 }
 
-import { spawn } from 'child_process';
+
 
 // Replace 'assets/intro.wav' with the path to your audio file
 const audioFile = 'audio/intro.wav';
@@ -218,7 +220,16 @@ async function main() {
   player.stderr.on('data', (data) => {
       console.error(`stderr: ${data}`);
   });
+ 
 
+  // Spawn Python script as a child process
+  const pythonProcess = spawn('python', ['end_call.py', process.pid.toString()]);
+
+    // Event listener for Python process exit
+  pythonProcess.on('exit', (code) => {
+      console.log(`Python process exited with code ${code}`);
+        // Handle the exit of the Python script, maybe clean up or restart your Node.js logic
+  });
   
   while (true) { // Loop until a break condition is met
       try {
