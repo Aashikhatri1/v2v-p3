@@ -172,7 +172,7 @@ let script =
 "Services Overview:At Fight Flow Academy, we pride ourselves on offering a diverse range of classes like MMA, Boxing, HIIT Boxing, Muay Thai, Kickboxing, Youth Boxing, Jiu Jitsu, and Yoga. Whether you're just starting out or are an experienced athlete, we have programs that cater to every skill level and interest. Respond only 20-25 words around only.  "+
 "Community, Safety, and Facilities:We're not just a training center; we're a community. We host member events and have a strong focus on creating a supportive environment. Also, our safety protocols and emergency procedures are top-notch, ensuring everyone's well-being."+
 "Membership, Free Trial Class, and Follow-Up:Our membership is $100 per month, granting you access to all classes. I'd suggest starting with a free trial class to see what we offer. Afterward, we'll follow up to hear your thoughts and answer any further questions."+
-"Referral Program, Testimonials, and Accessibility:We have a referral program with benefits for both you and your friends. Also, our members have shared inspiring success stories, which I'd be happy to send you. And don't worry about accessibility – our facilities are equipped to welcome everyone."+
+"Referral Program, Testimonials, and Accessibility:We have a referral program with benefits for both you and your friends. Also, our members have shared inspiring success stories, which I'd be happy to send you. And don't worry about accessibility â€“ our facilities are equipped to welcome everyone."+
 "Closing and Action Encouragement:How about we schedule a trial class for you? This is a great opportunity to experience our academy. We have a few slots left in our popular classes. What day works best for you?"+
 "If they need time: I understand. Can I send you more details via email? What's your email address?"+
 "If They Are Hesitant or Not Interested:I completely understand if you're not ready to commit. However, I'd highly recommend our free trial classes. They're a great way to experience our academy's atmosphere and training quality firsthand, with no obligation to join. Many of our now-enthusiastic members started with a trial and found it invaluable in making their decision. How about we schedule a free trial for you to see the benefits for yourself?"+
@@ -206,7 +206,7 @@ function convertTimeForSpeech(text) {
 async function main() {
   let chatHistory = [];
   // Spawn Python script as a child process
-  const pythonProcess = spawn('python', ['button_monitor.py', process.pid.toString()]);
+  const pythonProcess = spawn('python', ['end_call.py', process.pid.toString()]);
 
     // Event listener for Python process exit
   pythonProcess.on('exit', (code) => {
