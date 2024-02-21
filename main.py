@@ -1,19 +1,3 @@
-
-# import subprocess
-# import time
-# import pyautogui as pg
-
-# def call_js_chat():
-#     try:
-#         # Run the JavaScript file using Node.js
-#         result = subprocess.run(['node', 'integrated.mjs'], capture_output=True, text=True)
-#         print(result.stdout)
-#     except Exception as e:
-#         print("Error running JavaScript code:", e)
-
-# call_js_chat()
-
-
 import subprocess
 import time
 import pyautogui as pg
